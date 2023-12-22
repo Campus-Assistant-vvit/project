@@ -25,11 +25,13 @@
     <string name="previous">Previous</string>
 
 
-
-
-
-
-
+    <string name="nirf_ranking">NIRF Ranking</string>
+    <string name="mandatory_disclosure">Mandatory Disclosure</string>
+    <string name="notifications">Notifications</string>
+    <string name="institution_info">Institution Info</string>
+    <string name="gallery">Gallery</string>
+    <string name="about">About</string>
+    <string name="logout">Logout</string>
 
 
     <string name="lorem_ipsum">

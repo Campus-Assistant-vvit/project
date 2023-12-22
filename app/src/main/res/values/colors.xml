@@ -10,6 +10,36 @@
     <color name="E97F69">#E97F69</color>
     <color name="tableRowColor">#D9D9D9</color>
 
+    <color name="turquoiseBlue">#40E0D0</color>
+    <color name="turquoiseShade">#00CED1</color>
 
+    <color name="sunflowerYellow">#FFD700</color>
+    <color name="sunflowerShade">#FFC400</color>
+
+    <color name="rosePink">#FF69B4</color>
+    <color name="roseShade">#FF1493</color>
+
+    <color name="skyBlue">#87CEEB</color>
+    <color name="skyShade">#ADD8E6</color>
+
+    <color name="limeGreen">#00FF00</color>
+    <color name="limeShade">#32CD32</color>
+
+    <color name="coralOrange">#FF6347</color>
+    <color name="coralShade">#FF4500</color>
+
+    <color name="lavenderPurple">#E6E6FA</color>
+    <color name="lavenderShade">#D8BFD8</color>
+
+    <color name="slateGray">#708090</color>
+    <color name="slateShade">#2F4F4F</color>
+
+    <color name="goldenrod">#DAA520</color>
+    <color name="goldenrodShade">#B8860B</color>
+
+    <color name="tealGreen">#008080</color>
+    <color name="tealShade">#006666</color>
+
+    <color name="menuBackgroundColor">#E97F69</color>
 
 </resources>

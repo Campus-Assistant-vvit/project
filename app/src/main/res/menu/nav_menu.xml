@@ -1,0 +1,25 @@
+<!-- res/menu/nav_menu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_nirf_ranking"
+        android:title="NIRF Ranking" />
+    <item
+        android:id="@+id/nav_mandatory_disclosure"
+        android:title="Mandatory Disclosure" />
+    <item
+        android:id="@+id/nav_institution_info"
+        android:title="Institution Info" />
+    <item
+        android:id="@+id/nav_gallery"
+        android:title="Gallery" />
+    <item
+        android:id="@+id/nav_about"
+        android:title="About" />
+    <item
+        android:id="@+id/nav_logout"
+        android:title="Logout" />
+
+    <item
+        android:id="@+id/nav_exit"
+        android:title="Exit" />
+</menu>
