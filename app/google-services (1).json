@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "101658006937",
-    "project_id": "myproject-a41ea",
-    "storage_bucket": "myproject-a41ea.appspot.com"
+    "project_number": "783938429059",
+    "project_id": "campus-assistance-43662",
+    "storage_bucket": "campus-assistance-43662.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:101658006937:android:1b02d9016368ae92866f08",
+        "mobilesdk_app_id": "1:783938429059:android:3fdc5de7885ea163f53bb6",
         "android_client_info": {
           "package_name": "com.example.campusassistant"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDyDtG18gOmzpulKaqWxm1bMgN8uodTBNc"
+          "current_key": "AIzaSyCpZBIHtRb4g9-dLEo1sVO6AalYPEr03bk"
         }
       ],
       "services": {

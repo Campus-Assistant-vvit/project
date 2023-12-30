@@ -33,7 +33,7 @@
                 <EditText
                     android:id="@+id/name"
                     android:layout_width="350dp"
-                    android:layout_height="46dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="36dp"
                     android:autofillHints="number"
                     android:hint="@string/hint_name"
@@ -49,7 +49,7 @@
                 <EditText
                     android:id="@+id/password"
                     android:layout_width="350dp"
-                    android:layout_height="46dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="16dp"
                     android:autofillHints="number"
                     android:ems="10"
@@ -64,7 +64,7 @@
                 <EditText
                     android:id="@+id/confirmPassword"
                     android:layout_width="350dp"
-                    android:layout_height="46dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="16dp"
                     android:ems="10"
                     android:hint="@string/hint_confirm_password"
@@ -79,7 +79,7 @@
                 <EditText
                     android:id="@+id/Roll_number"
                     android:layout_width="350dp"
-                    android:layout_height="46dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="16dp"
                     android:ems="10"
                     android:hint="@string/hint_roll_number_alphanumeric"
@@ -94,7 +94,7 @@
                 <EditText
                     android:id="@+id/email"
                     android:layout_width="350dp"
-                    android:layout_height="46dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="16dp"
                     android:ems="10"
                     android:hint="@string/hint_email"
@@ -109,7 +109,7 @@
                 <EditText
                     android:id="@+id/mobileno"
                     android:layout_width="350dp"
-                    android:layout_height="46dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="16dp"
                     android:ems="10"
                     android:hint="@string/hint_mobile_number"
@@ -123,16 +123,14 @@
 
 
                 <Button
-                    android:id="@+id/otp_btn"
+                    android:id="@+id/register"
                     android:layout_width="180dp"
-                    android:layout_height="45dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="32dp"
                     android:layout_marginBottom="32dp"
                     android:padding="12dp"
                     android:textColor="#FFFFFF"
-                    android:text="@string/btn_get_otp"
-
-                    android:onClick="onClickOtpButton"
+                    android:text="Register"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.497"
@@ -141,37 +139,6 @@
                     app:layout_constraintVertical_bias="0.225" />
 
 
-                <EditText
-                    android:id="@+id/otpEditText"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="16dp"
-                    android:ems="10"
-                    android:padding="12dp"
-                    android:hint="@string/hint_enter_otp"
-                    android:autofillHints="number"
-                    android:inputType="number"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/otp_btn" />
-
-                <Button
-                    android:id="@+id/verifyOtpButton"
-                    android:layout_width="250dp"
-                    android:layout_height="51dp"
-                    android:padding="12dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/btn_verify_otp"
-                    android:background="@drawable/button_border"
-                    android:textColor="#FFFFFF"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.559"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/otpEditText"
-                    app:layout_constraintVertical_bias="0.0" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

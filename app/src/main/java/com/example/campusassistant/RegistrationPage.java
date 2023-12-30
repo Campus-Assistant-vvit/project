@@ -12,8 +12,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
@@ -37,15 +40,8 @@ public class RegistrationPage extends AppCompatActivity {
     private EditText rollNumberEditText;
     private EditText emailEditText;
     private EditText mobileNumberEditText;
-    private Button otpButton;
-    private EditText otpEditText;
-    private Button verifyOtpButton;
-    private String generatedOtp;
-    private FirebaseAuth mAuth;
-    private String mVerificationId;
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks;
-    private PhoneAuthProvider.ForceResendingToken mResendToken;
-    private static final String TAG = "PhoneNumberVerification";
+    private final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+    private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,181 +58,137 @@ public class RegistrationPage extends AppCompatActivity {
         rollNumberEditText = findViewById(R.id.Roll_number);
         emailEditText = findViewById(R.id.email);
         mobileNumberEditText = findViewById(R.id.mobileno);
-        otpButton = findViewById(R.id.otp_btn);
-        otpEditText = findViewById(R.id.otpEditText);
-        verifyOtpButton = findViewById(R.id.verifyOtpButton);
+        Button register = findViewById(R.id.register);
 
         // Initialize Firebase
-        mAuth = FirebaseAuth.getInstance();
-
-        // Initialize PhoneAuthProvider callbacks
-        callbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+        register.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-                Log.d(TAG, "onVerificationCompleted:" + phoneAuthCredential);
-                signInWithPhoneAuthCredential(phoneAuthCredential);
-            }
+            public void onClick(View v) {
+                final String name= nameEditText.getText().toString();
+                final String email= emailEditText.getText().toString();
+                final String password=passwordEditText.getText().toString();
+                final String confirmPassword = confirmPasswordEditText.getText().toString();
+                final String rollNumber = rollNumberEditText.getText().toString();
+                final String mobile = mobileNumberEditText.getText().toString();
+                if (name.isEmpty()||email.isEmpty()||password.isEmpty()||confirmPassword.isEmpty()||rollNumber.isEmpty()||mobile.isEmpty()){
+                    Toast.makeText(RegistrationPage.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                }
+                if (name.isEmpty()) {
+                        Toast.makeText(RegistrationPage.this, "Name cannot be empty", Toast.LENGTH_SHORT).show();
+                }
+                if(!rollNumber.isEmpty()) {
+                    // Check for length (10 characters)
+                    if (rollNumber.length() != 10) {
+                        Toast.makeText(RegistrationPage.this, "Invalid roll number length (must be 10 characters)", Toast.LENGTH_SHORT).show();
+                    }
 
-            @Override
-            public void onVerificationFailed(@NonNull FirebaseException e) {
-                Log.w(TAG, "onVerificationFailed", e);
-            }
+                    // Check for year pattern (first two characters)
+                    if (!rollNumber.substring(0, 2).matches("[0-9]{2}")) {
+                        Toast.makeText(RegistrationPage.this, "Invalid year format in roll number", Toast.LENGTH_SHORT).show();
 
-            @Override
-            public void onCodeSent(@NonNull String verificationId, @NonNull PhoneAuthProvider.ForceResendingToken token) {
-                Log.d(TAG, "onCodeSent:" + verificationId);
-                // Save verification ID and resending token so we can use them later
-                mVerificationId = verificationId;
-                mResendToken = token;
-            }
-        };
+                    }
 
-        // Set onClickListener for the OTP button
-        otpButton.setOnClickListener(view -> {
-            String mobileNumber = mobileNumberEditText.getText().toString();
-            if (isValidMobileNumber(mobileNumber)) {
-                sendOtp(mobileNumber);
-            } else {
-                Toast.makeText(RegistrationPage.this, "Invalid mobile number", Toast.LENGTH_SHORT).show();
-            }
-        });
+                    // Check for fixed characters (bq)
+                    if (!rollNumber.substring(2, 4).equals("bq") && !rollNumber.substring(2, 4).equals("BQ")) {
+                        Toast.makeText(RegistrationPage.this, "Invalid character combination in roll number", Toast.LENGTH_SHORT).show();
 
-        // Set onClickListener for the Verify OTP button
-        verifyOtpButton.setOnClickListener(view -> {
-            String otp = otpEditText.getText().toString();
-            if (!otp.isEmpty()) {
-                verifyOtp(otp);
-            } else {
-                Toast.makeText(RegistrationPage.this, "Enter OTP", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+                    }
 
-    public void onClickOtpButton(View view) {
-        // Start the registration process
-        startRegistration();
-    }
+                    // Check for section pattern (next two characters)
+                    if (!rollNumber.substring(4, 6).matches("[0-9a-z]{2}")) {
+                        Toast.makeText(RegistrationPage.this, "Invalid section format in roll number", Toast.LENGTH_SHORT).show();
 
-    private void startRegistration() {
-        // Get user input
-        String name = nameEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
-        String confirmPassword = confirmPasswordEditText.getText().toString();
-        String rollNumber = rollNumberEditText.getText().toString();
-        String email = emailEditText.getText().toString();
-        String mobileNumber = mobileNumberEditText.getText().toString();
+                    }
 
-        // Validate user input
-        if (name.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() ||
-                rollNumber.isEmpty() || email.isEmpty() || mobileNumber.isEmpty()) {
-            Toast.makeText(RegistrationPage.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
-            return;
-        }
+                    // Check for branch pattern (next two characters)
+                    if (!rollNumber.substring(6, 8).matches("[0-9a-z]{2}")) {
+                        Toast.makeText(RegistrationPage.this, "Invalid branch format in roll number", Toast.LENGTH_SHORT).show();
+                    }
 
-        // Proceed with phone number verification
-        sendOtp(mobileNumber);
-    }
+                    // Check for roll number pattern (last two characters)
+                    if (!rollNumber.substring(8).matches("[0-9]{2}")) {
+                        Toast.makeText(RegistrationPage.this, "Invalid roll number format in roll number", Toast.LENGTH_SHORT).show();
+                    }
+                }
+               if(!email.matches("[a-zA-Z0-9\\.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*")){
+                        Toast.makeText(RegistrationPage.this, "Invalid email address", Toast.LENGTH_SHORT).show();
+                }
+               if (!mobile.isEmpty()) {
+                    if (mobile.length() != 10){
+                        Toast.makeText(RegistrationPage.this, "Invalid mobile number length", Toast.LENGTH_SHORT).show();
+                    }
+                    if (!mobile.matches("[0-9]+")){
+                        Toast.makeText(RegistrationPage.this, "Mobile number can only contain digits", Toast.LENGTH_SHORT).show();
 
-    // Validate the mobile number
-    private boolean isValidMobileNumber(String mobileNumber) {
-        // Check if the mobile number is null or empty
-        return mobileNumber != null && !mobileNumber.isEmpty() && mobileNumber.length() == 10 && mobileNumber.matches("\\d+");
-    }
+                    }
+                    if(!password.isEmpty()){
+                        if (password.length() < 8) {
+                            Toast.makeText(RegistrationPage.this, "Password must be at least 8 characters long", Toast.LENGTH_SHORT).show();
 
-    // Validate the email address
-    private boolean isValidEmailAddress(String emailAddress) {
-        // Check if the email address is null or empty
-        return emailAddress != null && !emailAddress.isEmpty() && emailAddress.matches("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}");
-    }
+                        }
 
-    // Method to generate and send OTP
-    private void sendOtp(String mobileNumber) {
-        // Validate the mobile number
-        if (!isValidMobileNumber(mobileNumber)) {
-            Toast.makeText(RegistrationPage.this, "Invalid mobile number", Toast.LENGTH_SHORT).show();
-            return;
-        }
+                        // Check for uppercase and lowercase letters
+                        if (!password.matches("^(.*?[A-Z])(.*?[a-z]).*$")) {
+                            Toast.makeText(RegistrationPage.this, "Password must contain both uppercase and lowercase letters", Toast.LENGTH_SHORT).show();
 
-        // Generate a random OTP
-        generatedOtp = generateOtp();
+                        }
 
-        // Get the SMS manager
-        SmsManager smsManager = SmsManager.getDefault();
+                        // Check for at least one number
+                        if (!password.matches(".*\\d.*")) {
+                            Toast.makeText(RegistrationPage.this, "Password must contain at least one number", Toast.LENGTH_SHORT).show();
 
-        // Send an SMS message to the user's phone number
-        smsManager.sendTextMessage(mobileNumber, null, getString(R.string.otp_message, generatedOtp), null, null);
+                        }
 
-        // Start phone number verification
-        PhoneAuthOptions options = PhoneAuthOptions.newBuilder(mAuth)
-                .setPhoneNumber(mobileNumber)
-                .setTimeout(60L, TimeUnit.SECONDS)
-                .setActivity(this)
-                .setCallbacks(callbacks)
-                .build();
+                        // Check for at least one special character (optional, replace with your desired complexity)
+                        if (!password.matches(".*[~!@#$%^&*()-_+={}:\"\\|;,.<>/?].*")) {
+                            Toast.makeText(RegistrationPage.this, "Password must contain at least one special character", Toast.LENGTH_SHORT).show();
 
-        PhoneAuthProvider.verifyPhoneNumber(options);
-    }
+                        }
+                    }
+                }
+                if (!password.equals(confirmPassword)) {
+                    Toast.makeText(RegistrationPage.this, "password is not matching", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.hasChild(rollNumber)) {
+                                Toast.makeText(RegistrationPage.this, "Person is already registered", Toast.LENGTH_SHORT).show();
+                            } else {
 
-    // Method to generate a random OTP
-    private String generateOtp() {
-        Random random = new SecureRandom();
-        int otpValue = 100000 + random.nextInt(900000); // Generate a 6-digit OTP
-        return String.valueOf(otpValue);
-    }
+                                databaseReference.child("users").child(rollNumber).child("fullname").setValue(name);
+                                databaseReference.child("users").child(rollNumber).child("rollnumber").setValue(rollNumber);
+                                databaseReference.child("users").child(rollNumber).child("email").setValue(email);
+                                databaseReference.child("users").child(rollNumber).child("mobilenumber").setValue(mobile);
+                                databaseReference.child("users").child(rollNumber).child("passsword").setValue(password);
+                                mAuth.createUserWithEmailAndPassword(email,password);
+                                mAuth.createUserWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString()).addOnCompleteListener(RegistrationPage.this, new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(RegistrationPage.this, "Register user successful", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(RegistrationPage.this, MainActivity.class));
 
-    // Method to verify the entered OTP
-    private void verifyOtp(String enteredOtp) {
-        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, enteredOtp);
-        signInWithPhoneAuthCredential(credential);
-    }
+                                        } else {
+                                            Toast.makeText(RegistrationPage.this, "Registration failed", Toast.LENGTH_SHORT).show();
 
-    // Method to sign in
-    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
-        mAuth.signInWithCredential(credential).addOnCompleteListener(this, task -> {
-            if (task.isSuccessful()) {
-                // Sign in success
-                registerUser();
-            } else {
-                // If sign in fails, display a message to the user.
-                if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                    Toast.makeText(getApplicationContext(), "Invalid verification code", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(RegistrationPage.this, "DataBase error try again", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
                 }
             }
         });
-    }
 
-    // Method to register the user
-    private void registerUser() {
-        // Create a new document in the database
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference userRef = database.child("users").push();
-
-        // Set the document's fields to the user's information
-        userRef.child("name").setValue(nameEditText.getText().toString());
-        userRef.child("password").setValue(passwordEditText.getText().toString());
-        userRef.child("confirmPassword").setValue(confirmPasswordEditText.getText().toString());
-        userRef.child("rollNumber").setValue(rollNumberEditText.getText().toString());
-        userRef.child("email").setValue(emailEditText.getText().toString());
-        userRef.child("mobileNumber").setValue(mobileNumberEditText.getText().toString());
-
-        // Save the document to the database
-        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                // The document has been saved to the database.
-                // Redirect the user to the next activity
-                Intent intent = new Intent(RegistrationPage.this, NextActivity.class);
-                // Pass user data to the next activity
-                intent.putExtra("name", nameEditText.getText().toString());
-                intent.putExtra("email", emailEditText.getText().toString());
-                startActivity(intent);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // An error occurred while saving the document to the database.
-                // Handle the error.
-            }
-        });
     }
 }
