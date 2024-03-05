@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/titleLabel"
+        android:layout_width="232dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="29dp"
+        android:layout_toStartOf="@+id/logoImageView"
+        android:text="Course Information"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/vvitloghome" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/about"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleLabel"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#D9D9D9"
+        android:onClick="About"
+        android:text="About "
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:cornerRadius="15dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/course_structure"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/about"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="11dp"
+        android:backgroundTint="#D9D9D9"
+        android:onClick="coursestructure"
+        android:text="Course Structure"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:cornerRadius="15dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/syllabus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/course_structure"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="#D9D9D9"
+        android:onClick="syllabus"
+        android:text="Syllabus"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:cornerRadius="15dp" />
+
+</RelativeLayout>

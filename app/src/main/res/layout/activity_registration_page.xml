@@ -5,7 +5,8 @@
         android:id="@+id/mobile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".RegistrationPage">
+        tools:context=".RegistrationPage"
+        android:background="#FFFFFF">
 
         <ScrollView
             android:layout_width="match_parent"

@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
     <!-- Existing content (RelativeLayout) -->
     <RelativeLayout
@@ -91,14 +92,27 @@
             </com.google.android.material.textfield.TextInputLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+        <!-- NavigationView for the Drawer -->
+
+        <ScrollView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/topLayout"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="10dp">
+
+
         <LinearLayout
             android:id="@+id/buttonLayout"
             android:layout_width="match_parent"
-            android:layout_height="372dp"
+            android:layout_height="484dp"
             android:layout_below="@id/topLayout"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="144dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="10dp"
             android:orientation="vertical"
             android:padding="8dp">
 
@@ -107,7 +121,7 @@
                 android:layout_width="375dp"
                 android:layout_height="66dp"
                 android:layout_margin="8dp"
-                android:backgroundTint="@color/tealShade"
+                android:backgroundTint="@color/lavenderShade"
                 android:text="Attendance"
                 android:textColor="@android:color/white"
                 app:cornerRadius="15dp" />
@@ -117,7 +131,7 @@
                 android:layout_width="375dp"
                 android:layout_height="66dp"
                 android:layout_margin="8dp"
-                android:backgroundTint="@color/slateGray"
+                android:backgroundTint="@color/lavenderShade"
                 android:text="Results"
                 android:textColor="@android:color/white"
                 app:cornerRadius="15dp" />
@@ -127,7 +141,7 @@
                 android:layout_width="375dp"
                 android:layout_height="66dp"
                 android:layout_margin="8dp"
-                android:backgroundTint="@color/goldenrod"
+                android:backgroundTint="@color/lavenderShade"
                 android:text="Announcements"
                 android:textColor="@android:color/white"
                 app:cornerRadius="15dp" />
@@ -142,12 +156,83 @@
                 android:textColor="@android:color/white"
                 app:cornerRadius="15dp" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/courseinfoButton1"
+                android:layout_width="375dp"
+                android:layout_height="66dp"
+                android:layout_margin="8dp"
+                android:backgroundTint="@color/lavenderShade"
+                android:text="Course Information"
+                android:textColor="@android:color/white"
+                app:cornerRadius="15dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/examcellButton"
+                android:layout_width="375dp"
+                android:layout_height="66dp"
+                android:layout_margin="8dp"
+                android:backgroundTint="@color/lavenderShade"
+                android:text="Exam cell"
+                android:textColor="@android:color/white"
+                app:cornerRadius="15dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/TranspoButton"
+                android:layout_width="375dp"
+                android:layout_height="66dp"
+                android:layout_margin="8dp"
+                android:backgroundTint="@color/lavenderShade"
+                android:text="Transportation"
+                android:textColor="@android:color/white"
+                app:cornerRadius="15dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/PlacementcellButton"
+                android:layout_width="375dp"
+                android:layout_height="66dp"
+                android:layout_margin="8dp"
+                android:backgroundTint="@color/lavenderShade"
+                android:text="Placement Cell"
+                android:textColor="@android:color/white"
+                app:cornerRadius="15dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/eventsButton"
+                android:layout_width="375dp"
+                android:layout_height="66dp"
+                android:layout_margin="8dp"
+                android:backgroundTint="@color/lavenderShade"
+                android:text="Events"
+                android:textColor="@android:color/white"
+                app:cornerRadius="15dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/AssistantButton"
+                android:layout_width="375dp"
+                android:layout_height="66dp"
+                android:layout_margin="8dp"
+                android:backgroundTint="@color/lavenderShade"
+                android:text="Assistance"
+                android:textColor="@android:color/white"
+                app:cornerRadius="15dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/feedback"
+                android:layout_width="375dp"
+                android:layout_height="66dp"
+                android:layout_margin="8dp"
+                android:backgroundTint="@color/lavenderShade"
+                android:text="Feed Back"
+                android:textColor="@android:color/white"
+                app:cornerRadius="15dp" />
+
+
+
+
         </LinearLayout>
 
+    </ScrollView>
 
-
-
-        <!-- NavigationView for the Drawer -->
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/nav_view"
             android:layout_width="240dp"

@@ -70,5 +70,8 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="title_activity_digilocker">Digilocker</string>
+    <string name="title_activity_digilocker_main">digilockerMain</string>
+    <string name="title_activity_course_information">Course_Information</string>
 
 </resources>

@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -74,10 +75,24 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         digilockerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 // Handle Digilocker button click
+                Intent intent = new Intent(HomePage.this, digilockerMain.class);
+                startActivity(intent);
             }
         });
 
+        Button courseInformationButton = findViewById(R.id.courseinfoButton1);
+
+        // Set OnClickListener for the button
+        courseInformationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start CourseInformationActivity
+                Intent intent = new Intent(HomePage.this, Course_Information.class);
+                startActivity(intent);
+            }
+        });
         // Set up NavigationView
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
