@@ -26,6 +26,11 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
 
+import com.google.firebase.FirebaseApp;
+
+
+
+
 public class UploadFile extends AppCompatActivity {
     Button uf, ucf;
     ProgressDialog pd;
@@ -39,6 +44,10 @@ public class UploadFile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityCompat.requestPermissions(UploadFile.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.MANAGE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
         setContentView(R.layout.activity_upload_file);
+
+        // Initialize Firebase App (optional)
+        FirebaseApp.initializeApp(this);
+
         uf = findViewById(R.id.upf);
         ucf = findViewById(R.id.choof);
         ucf.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +70,9 @@ public class UploadFile extends AppCompatActivity {
             public void onClick(View view) {
                 if (img == null) {
                     Toast.makeText(UploadFile.this, "Upload any image", Toast.LENGTH_LONG).show();
+                    return;
                 }
+
                 pd = new ProgressDialog(UploadFile.this);
                 pd.setTitle("Uploading");
                 pd.show();
@@ -74,7 +85,13 @@ public class UploadFile extends AppCompatActivity {
                 user = pre.getString("na", "");
                 path = "/" + user + " " + fn;
                 System.out.println("uri:" + img);
-                // Firebase Storage code removed
+
+                // **Replace with actual Firebase Storage upload logic**
+                // ...
+                // This is where you would upload the file to Firebase Storage
+                // using the FirebaseStorage and StorageReference objects
+
+                pd.dismiss(); // Dismiss the progress dialog after upload (assuming it's successful)
             }
         });
 
@@ -94,7 +111,7 @@ public class UploadFile extends AppCompatActivity {
                 assert res != null;
                 int cutt = res.lastIndexOf('/');
                 if (cutt != -1) {
-                    res = res.substring(cutt + 1);
+                    res = res.substring(cutt+ 1);
                 }
             }
         }
