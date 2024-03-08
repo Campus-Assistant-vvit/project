@@ -36,6 +36,9 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         MaterialButton announcementsButton = findViewById(R.id.announcementsButxton);
         MaterialButton digilockerButton = findViewById(R.id.digilockerButton);
         ImageView menuIconImageView = findViewById(R.id.menuIconImageView);
+        MaterialButton examcellButton = findViewById(R.id.examcellButton);
+        MaterialButton TransportationButton = findViewById(R.id.TranspoButton);
+
         menuLayout = findViewById(R.id.menuLayout); // ID of the LinearLayout in your XML
 
         // Set click listener for the menu icon
@@ -69,6 +72,9 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             @Override
             public void onClick(View v) {
                 // Handle Announcements button click
+
+                Intent intent = new Intent(HomePage.this, Announcements_activity.class);
+                startActivity(intent);
             }
         });
 
@@ -93,6 +99,29 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                 startActivity(intent);
             }
         });
+
+
+        examcellButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Handle ExamCell button click
+                Intent intent = new Intent(HomePage.this, ExamCell.class);
+                startActivity(intent);
+            }
+        });
+
+
+        TransportationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Handle Transportation button click
+                Intent intent = new Intent(HomePage.this, Transportation.class);
+                startActivity(intent);
+            }
+        });
+
         // Set up NavigationView
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);

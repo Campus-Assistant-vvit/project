@@ -1,6 +1,7 @@
 package com.example.campusassistant;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.util.Log;
@@ -68,7 +69,7 @@ public class RegistrationPage extends AppCompatActivity {
                 final String email= emailEditText.getText().toString();
                 final String password=passwordEditText.getText().toString();
                 final String confirmPassword = confirmPasswordEditText.getText().toString();
-                final String rollNumber = rollNumberEditText.getText().toString();
+                final  String rollNumber = rollNumberEditText.getText().toString();
                 final String mobile = mobileNumberEditText.getText().toString();
                 if (name.isEmpty()||email.isEmpty()||password.isEmpty()||confirmPassword.isEmpty()||rollNumber.isEmpty()||mobile.isEmpty()){
                     Toast.makeText(RegistrationPage.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
@@ -163,17 +164,18 @@ public class RegistrationPage extends AppCompatActivity {
                                 databaseReference.child("users").child(rollNumber).child("mobilenumber").setValue(mobile);
                                 databaseReference.child("users").child(rollNumber).child("passsword").setValue(password);
                                 mAuth.createUserWithEmailAndPassword(email,password);
-                                mAuth.createUserWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString()).addOnCompleteListener(RegistrationPage.this, new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
-                                        if (task.isSuccessful()) {
-                                            Toast.makeText(RegistrationPage.this, "Register user successful", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(RegistrationPage.this, MainActivity.class));
+                                mAuth.createUserWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString()).addOnCompleteListener(RegistrationPage.this, task -> {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(RegistrationPage.this, "Register user successful", Toast.LENGTH_SHORT).show();
+                                        SharedPreferences sharedPreferences = getSharedPreferences("CMS", MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString("rollnumber", rollNumber);
+                                        editor.apply();
+                                        startActivity(new Intent(RegistrationPage.this, MainActivity.class));
 
-                                        } else {
-                                            Toast.makeText(RegistrationPage.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(RegistrationPage.this, "Registration failed", Toast.LENGTH_SHORT).show();
 
-                                        }
                                     }
                                 });
 
@@ -191,4 +193,5 @@ public class RegistrationPage extends AppCompatActivity {
         });
 
     }
+
 }

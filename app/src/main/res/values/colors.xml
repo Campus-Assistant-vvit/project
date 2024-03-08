@@ -42,4 +42,8 @@
 
     <color name="menuBackgroundColor">#E97F69</color>
 
+    <color name="light_gray">#CCCCCC</color> <!-- Light gray color -->
+    <color name="dark_gray">#666666</color> <!-- Dark gray color -->
+
+
 </resources>
