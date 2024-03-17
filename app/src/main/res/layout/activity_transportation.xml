@@ -13,74 +13,85 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="12dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/vvitloghome"
-        app:layout_constraintBottom_toTopOf="@+id/titleLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/titleLabel"
-        android:layout_width="226dp"
-        android:layout_height="wrap_content"
+        android:layout_width="215dp"
+        android:layout_height="37dp"
+        android:layout_below="@id/logoImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
         android:text="Transportation"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/selectRouteText"
         app:layout_constraintEnd_toStartOf="@+id/logoImageView"
-        app:layout_constraintHorizontal_bias="0.638"
+        app:layout_constraintHorizontal_bias="0.415"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/selectRouteText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Route"
+        android:layout_width="108dp"
+        android:layout_height="25dp"
+        android:layout_below="@id/titleLabel"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="72dp"
+        android:text="Select Route"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/titleLabel"
-        app:layout_constraintTop_toBottomOf="@id/titleLabel" />
+        app:layout_constraintEnd_toStartOf="@+id/routeSpinner"
+        app:layout_constraintHorizontal_bias="0.181"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleLabel" />
 
     <Spinner
-        android:id="@+id/bus_route_spinner"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/spinner_border"
-        app:layout_constraintEnd_toStartOf="@+id/driver_details_card"
-        app:layout_constraintStart_toEndOf="@id/selectRouteText"
-        app:layout_constraintTop_toTopOf="@id/selectRouteText" />
+        android:id="@+id/routeSpinner"
+        android:layout_width="180dp"
+        android:layout_height="23dp"
+        android:layout_below="@id/selectRouteText"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="72dp"
+        android:entries="@array/route_options"
+        android:popupBackground="@drawable/custom_spinner_dropdown_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.719"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleLabel" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/driver_details_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="40dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/bus_route_spinner"
-        app:layout_constraintTop_toBottomOf="@+id/bus_route_spinner"
-        android:visibility="gone"> <!-- Initially hidden -->
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/routeSpinner"
+        app:layout_constraintVertical_bias="0.0">
 
-        <!-- Driver details layout -->
+
+    <!-- Driver details layout -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
-
-
+            android:padding="30dp">
 
             <!-- Your TextViews for driver details here -->
 
             <TextView
                 android:id="@+id/bus_number_text"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/bus_number"
                 android:textStyle="bold"
@@ -89,18 +100,18 @@
 
             <TextView
                 android:id="@+id/driver_name_text"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/driver_name"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/bus_number_text" />
 
             <TextView
                 android:id="@+id/mobile_number_text"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/mobile_number"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/driver_name_text" />

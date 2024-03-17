@@ -54,6 +54,14 @@
         <activity
             android:name=".Attendance"
             android:exported="false" />
+
+        <activity
+            android:name=".Transportation"
+            android:exported="false" />
+        <activity
+            android:name=".Announcements_activity"
+            android:exported="false" />
+
         <activity
             android:name=".HomePage"
             android:exported="false" /> <!-- Activities -->

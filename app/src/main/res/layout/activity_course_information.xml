@@ -59,6 +59,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="-25dp"
             android:layout_marginEnd="136dp"
+            android:popupBackground="@drawable/custom_spinner_dropdown_background"
             android:entries="@array/branch_options" />
 
         <!-- TextView for prompting the user to select a year -->
@@ -83,6 +84,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="-25dp"
             android:layout_marginEnd="136dp"
+            android:popupBackground="@drawable/custom_spinner_dropdown_background"
             android:entries="@array/year_options" />
 
         <!-- TextView for prompting the user to select a regulation -->
@@ -107,6 +109,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="-25dp"
             android:layout_marginEnd="136dp"
+            android:popupBackground="@drawable/custom_spinner_dropdown_background"
             android:entries="@array/regulation_options" />
 
         <!-- TextView for prompting the user to select a semester -->
@@ -131,6 +134,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="-25dp"
             android:layout_marginEnd="136dp"
+            android:popupBackground="@drawable/custom_spinner_dropdown_background"
             android:entries="@array/semester_options" />
 
 
