@@ -79,5 +79,17 @@
     <string name="bus_number">Bus Number:</string>
     <string name="driver_name">Driver Name:</string>
     <string name="mobile_number">Mobile Number:</string>
+    <string name="todo">TODO</string>
+    <string name="career_resources">Career Resources</string>
+    <string name="resource_1_resume_building">Resource 1: Resume Building</string>
+    <string name="learn_how_to_create_a_professional_resume_that_stands_out">Learn how to create a professional resume
+        that stands out.
+    </string>
+    <string name="resource_3_networking_strategies">Resource 3: Networking Strategies</string>
+    <string name="discover_effective_networking_strategies_to_advance_your_career">Discover effective networking
+        strategies to advance your career.
+    </string>
+    <string name="get_tips_on_how_to_ace_your_job_interviews">Get tips on how to ace your job interviews.</string>
+    <string name="resource_2_interview_tips">Resource 2: Interview Tips</string>
 
 </resources>

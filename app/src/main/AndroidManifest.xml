@@ -1,85 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.campusassistant">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.example.campusassistant">
 
     <application
-        android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="Campus Assistant"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.CampusAssistant"
-        tools:targetApi="31">
+            android:allowBackup="true"
+            android:dataExtractionRules="@xml/data_extraction_rules"
+            android:fullBackupContent="@xml/backup_rules"
+            android:icon="@mipmap/ic_launcher"
+            android:label="Campus Assistant"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.CampusAssistant"
+            tools:targetApi="31">
         <activity
-            android:name=".courses_info2"
-            android:exported="false" />
+                android:name=".CareerResourcesActivity"
+                android:exported="false"/>
         <activity
-            android:name=".Course_Information"
-            android:exported="false"
-            android:label="@string/title_activity_course_information"
-            android:theme="@style/Theme.CampusAssistant" />
+                android:name=".JobAlertDetailActivity"
+                android:exported="false"/>
         <activity
-            android:name=".Retrieve_File"
-            android:exported="false" />
+                android:name=".JobAlertsActivity"
+                android:exported="false"/>
         <activity
-            android:name=".UploadFile"
-            android:exported="false" />
+                android:name=".InternshipDetailActivity"
+                android:exported="false"/>
         <activity
-            android:name=".digilockerMain"
-            android:exported="false"
-            android:label="@string/title_activity_digilocker_main"
-            android:theme="@style/Theme.CampusAssistant" />
+                android:name=".InternshipOpportunitiesActivity"
+                android:exported="false"/>
         <activity
-            android:name=".Digilocker"
-            android:exported="false"
-            android:label="@string/title_activity_digilocker"
-            android:theme="@style/Theme.CampusAssistant" />
+                android:name=".PlacementRecordsActivity"
+                android:exported="false"
+                android:launchMode="standard"/> <!-- Ensure launchMode is standard or not specified -->
         <activity
-            android:name=".nav_menu"
-            android:exported="false" />
+                android:name=".PlacementCell"
+                android:exported="false"/>
         <activity
-            android:name=".Results"
-            android:exported="false"
-            android:label="@string/title_activity_results"
-            android:theme="@style/Theme.CampusAssistant" />
+                android:name=".courses_info2"
+                android:exported="false"/>
         <activity
-            android:name=".subjectWiseAttendance"
-            android:exported="false" />
+                android:name=".Course_Information"
+                android:exported="false"
+                android:label="@string/title_activity_course_information"
+                android:theme="@style/Theme.CampusAssistant"/>
         <activity
-            android:name=".semesterWiseAttendance"
-            android:exported="false" />
+                android:name=".Retrieve_File"
+                android:exported="false"/>
         <activity
-            android:name=".Attendance"
-            android:exported="false" />
-
+                android:name=".UploadFile"
+                android:exported="false"/>
         <activity
-            android:name=".Transportation"
-            android:exported="false" />
+                android:name=".digilockerMain"
+                android:exported="false"
+                android:label="@string/title_activity_digilocker_main"
+                android:theme="@style/Theme.CampusAssistant"/>
         <activity
-            android:name=".Announcements_activity"
-            android:exported="false" />
-
+                android:name=".Digilocker"
+                android:exported="false"
+                android:label="@string/title_activity_digilocker"
+                android:theme="@style/Theme.CampusAssistant"/>
         <activity
-            android:name=".HomePage"
-            android:exported="false" /> <!-- Activities -->
+                android:name=".nav_menu"
+                android:exported="false"/>
         <activity
-            android:name=".logoPage"
-            android:exported="true">
+                android:name=".Results"
+                android:exported="false"
+                android:label="@string/title_activity_results"
+                android:theme="@style/Theme.CampusAssistant"/>
+        <activity
+                android:name=".subjectWiseAttendance"
+                android:exported="false"/>
+        <activity
+                android:name=".semesterWiseAttendance"
+                android:exported="false"/>
+        <activity
+                android:name=".Attendance"
+                android:exported="false"/>
+        <activity
+                android:name=".Transportation"
+                android:exported="false"/>
+        <activity
+                android:name=".ExamCell"
+                android:exported="false"/>
+        <activity
+                android:name=".Announcements_activity"
+                android:exported="false"/>
+        <activity
+                android:name=".HomePage"
+                android:exported="false"/> <!-- Activities -->
+        <activity
+                android:name=".logoPage"
+                android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/Theme.CampusAssistant" />
+                android:name=".MainActivity"
+                android:theme="@style/Theme.CampusAssistant"/>
         <activity
-            android:name=".RegistrationPage"
-            android:theme="@style/Theme.CampusAssistant" />
+                android:name=".RegistrationPage"
+                android:theme="@style/Theme.CampusAssistant"/>
     </application>
 
 </manifest>

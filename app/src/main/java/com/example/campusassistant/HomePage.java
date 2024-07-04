@@ -38,6 +38,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         ImageView menuIconImageView = findViewById(R.id.menuIconImageView);
         MaterialButton examcellButton = findViewById(R.id.examcellButton);
         MaterialButton TransportationButton = findViewById(R.id.TranspoButton);
+        MaterialButton placementcellButton = findViewById(R.id.PlacementcellButton);
 
         menuLayout = findViewById(R.id.menuLayout); // ID of the LinearLayout in your XML
 
@@ -107,6 +108,16 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
                 // Handle ExamCell button click
                 Intent intent = new Intent(HomePage.this, ExamCell.class);
+                startActivity(intent);
+            }
+        });
+
+        placementcellButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Handle ExamCell button click
+                Intent intent = new Intent(HomePage.this, PlacementCell.class);
                 startActivity(intent);
             }
         });

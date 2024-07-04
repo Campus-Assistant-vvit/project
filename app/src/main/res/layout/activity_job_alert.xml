@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <!-- Logo at the top-right corner -->
+        <ImageView
+                android:id="@+id/logoImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/vvitloghome"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"/>
+
+        <!-- Title at the top and center -->
+
+        <!-- RecyclerView for displaying job alerts -->
+        <TextView
+                android:id="@+id/titleLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Job Alerts"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="29dp"
+                android:layout_toStartOf="@+id/logoImageView"
+                android:layout_marginEnd="53dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="118dp" android:layout_alignParentTop="true"/>
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/jobAlertRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titleLabel"
+                android:layout_marginTop="48dp"
+                android:padding="16dp"/>
+
+    </RelativeLayout>
+</ScrollView>

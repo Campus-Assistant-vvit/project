@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF">
+
+        <!-- Logo at the top-right corner -->
+        <ImageView
+                android:id="@+id/logoImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/vvitloghome"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"/>
+
+        <!-- Title at the top and center -->
+        <TextView
+                android:id="@+id/titleLabel"
+                android:layout_width="238dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="38dp"
+                android:layout_marginEnd="48dp"
+                android:layout_toStartOf="@+id/logoImageView"
+                android:text="Placement Records"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+
+        <!-- TextView for prompting the user to select a branch -->
+        <TextView
+                android:id="@+id/selectBranchText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titleLabel"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="31dp"
+                android:text="Branch"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+        <!-- Spinner for selecting the branch -->
+        <Spinner
+                android:id="@+id/branchSpinner"
+                android:layout_width="144dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/selectBranchText"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="-25dp"
+                android:layout_marginEnd="136dp"
+                android:popupBackground="@drawable/custom_spinner_dropdown_background"
+                android:entries="@array/branch_options" />
+
+        <!-- TextView for prompting the user to select a year -->
+        <TextView
+                android:id="@+id/selectYearText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/branchSpinner"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:text="Year"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+        <!-- Spinner for selecting the year -->
+
+        <!-- TextView for prompting the user to select a company -->
+        <Spinner
+                android:id="@+id/yearSpinner"
+                android:layout_width="145dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/selectYearText"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="-25dp"
+                android:layout_marginEnd="134dp"
+                android:popupBackground="@drawable/custom_spinner_dropdown_background"
+                android:entries="@array/years"/>
+        <TextView
+                android:id="@+id/selectCompanyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/yearSpinner"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:text="Company"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+        <!-- Spinner for selecting the company -->
+        <Spinner
+                android:id="@+id/companySpinner"
+                android:layout_width="147dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/selectCompanyText"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="-25dp"
+                android:layout_marginEnd="136dp"
+                android:popupBackground="@drawable/custom_spinner_dropdown_background"
+                android:entries="@array/company_options" />
+
+        <!-- Button for submitting -->
+        <Button
+                android:id="@+id/openButton"
+                android:layout_width="166dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/companySpinner"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="@color/colorPrimaryB"
+                android:gravity="center"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Open"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+        <!-- TableLayout for displaying student records -->
+        <TableLayout
+                android:id="@+id/studentRecordsTable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/openButton"
+                android:padding="16dp"
+                android:background="@drawable/table_background"
+                android:stretchColumns="*"
+                android:shrinkColumns="*" android:layout_marginTop="-2dp"/>
+    </RelativeLayout>
+</ScrollView>
