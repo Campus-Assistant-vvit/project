@@ -23,8 +23,6 @@ import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -104,12 +102,12 @@ public class UploadFile extends AppCompatActivity {
         userFileRef.putFile(fileUri)
                 .addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                     @Override
-                    public void onComplete(Task<UploadTask.TaskSnapshot> task) {
+                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                         if (task.isSuccessful()) {
                             // File uploaded successfully, get the download URL
                             userFileRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
                                 @Override
-                                public void onComplete(Task<Uri> task) {
+                                public void onComplete(@NonNull Task<Uri> task) {
                                     if (task.isSuccessful()) {
                                         Uri fileUrl = task.getResult();
                                         saveFileUrlToDatabase(rollNumber, fileUrl);

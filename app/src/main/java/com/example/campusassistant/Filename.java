@@ -5,7 +5,7 @@ public class Filename {
     private String url;
     private String key;
 
-    public Filename(String filename, String url) {
+    public Filename(String filename, String url, String key) {
         this.filename = filename;
         this.url = url;
     }

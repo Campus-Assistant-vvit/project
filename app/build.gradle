@@ -47,13 +47,19 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
     implementation 'com.google.firebase:firebase-auth:23.0.0'
     implementation 'com.google.firebase:firebase-database:21.0.0'
-    implementation platform('com.google.firebase:firebase-bom:32.7.0')
+    implementation platform('com.google.firebase:firebase-bom:33.1.2')
     implementation 'androidx.browser:browser:1.8.0'
     implementation 'androidx.work:work-runtime:2.9.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation 'com.eightbitlab:blurview:1.6.6'
     implementation 'com.google.firebase:firebase-analytics'
+    // Import the BoM for the Firebase platform
+    implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
+
+    // Add the dependency for the Cloud Storage library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation("com.google.firebase:firebase-storage")
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -4,24 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#FFFFFF"
     tools:context=".Retrieve_File">
+
     <ListView
         android:id="@+id/listv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="#111"
-        android:dividerHeight="3dp"/>
+        android:dividerHeight="3dp"
+        android:visibility="gone" />  <!-- Initially hidden -->
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />  <!-- Initially visible -->
+
         <ImageView
             android:id="@+id/ig"
             android:layout_width="300dp"
             android:layout_height="300dp"
-            android:src="@drawable/preview"/>
+            android:src="@drawable/preview"
+            android:visibility="gone" /> <!-- Initially hidden -->
+
     </RelativeLayout>
 
 </RelativeLayout>
